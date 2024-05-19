@@ -2,6 +2,8 @@
 
 This is a PHP-based web application for a store named "Gentleman's Reserve". The application provides various functionalities such as viewing products, registering as a customer, and contacting the store. This project is part of the Web Application and Technologies (COMP 334) assignment.
 
+![Logo](images/logo.png)
+
 ## Project Structure
 
 - [`add.php`](add.php): This script allows users to add new products to the store.
@@ -30,10 +32,4 @@ This is a PHP-based web application for a store named "Gentleman's Reserve". The
 3. Click on a product ID to view the details of a specific product.
 4. Use the Add, Edit, and Delete buttons to manage the products.
 
-## Contributing
-
-Contributions are welcome. Please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
+###### Rasheed Alqobbaj - 1202474
