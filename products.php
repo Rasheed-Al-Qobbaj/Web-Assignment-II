@@ -7,41 +7,36 @@ try {
     die( $e->getMessage() );
 }
 
-$search = $_POST['search'] ?? '';
-$filter = $_POST['filter'] ?? 'name';
-$categoryFilter = $_POST['categoryFilter'] ?? '';
-
-// Fetch unique categories for the dropdown
-$categories = [];
-$categoryQuery = "SELECT DISTINCT category FROM product";
-$stmt = $pdo->query($categoryQuery);
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $categories[] = $row['category'];
-}
-
-// Construct the query based on search and filters
+// Prepare the query
 $query = "SELECT * FROM product";
-$params = [];
 
-if ($search) {
-    switch ($filter) {
-        case 'name':
-            $query .= " WHERE name LIKE :search";
-            $params[':search'] = "%$search%";
-            break;
-        case 'price':
-            $query .= " WHERE price <= :search";
-            $params[':search'] = $search;
-            break;
-        case 'category':
-            $query .= " WHERE category LIKE :category";
-            $params[':category'] = "%$categoryFilter%";
-            break;
+$categories = ['Blazer', 'Suit', 'Shirt', 'Footware', 'Accessory'];
+
+// Check if the user has searched for a product
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $search = $_POST['search'] ?? '';
+    $field = $_POST['field'] ?? 'name';
+    $category = $_POST['category'] ?? '';
+
+    $params = [];
+
+    if ($field === 'name') {
+        $query .= " WHERE name LIKE :search";
+        $params['search'] = "%$search%";
+    } elseif ($field === 'price') {
+        $query .= " WHERE price <= :search";
+        $params['search'] = $search;
+    } elseif ($field === 'category') {
+        $query .= " WHERE category = :category";
+        $params['category'] = $_POST['categorySelect'];
     }
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute($params);
+} else {
+    $stmt = $pdo->query($query);
 }
 
-$stmt = $pdo->prepare($query);
-$stmt->execute($params);
 // Fetch all products as objects and store them in an array
 $products = [];
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -66,28 +61,42 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 </head>
 <body>
     <header>
-        <h1>e-Clothing Store</h1>
+        <h1>Gentleman's Reserve</h1>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Store Logo" width="50px">
+        </a>
         <nav>
-            <a href="add.php">Add a new Product</a>
-            <a href="products.php">View Products</a>
+            <a href="index.html">Home</a>
+            <a href="products.php">Products</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="register.html">Register</a>
         </nav>
     </header>
 
-    <form method="POST" action="products.php">
-        <input type="text" name="search" placeholder="Search Product Name">
-        <label><input type="radio" name="filter" value="name" checked> Name</label>
-        <label><input type="radio" name="filter" value="price"> Price</label>
-        <label><input type="radio" name="filter" value="category"> Category</label>
-        <select name="categoryFilter">
-            <option value="">Select Category</option>
-            <?php foreach ($categories as $category): ?>
-                <option value="<?php echo htmlspecialchars($category); ?>">
-                    <?php echo htmlspecialchars($category); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-        <button type="submit">Filter</button>
-    </form>
+    <fieldset>
+        <legend>Filter Products</legend>
+        <form action="products.php" method="POST">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" placeholder="Search for something...">
+
+            <label for="field">Search by:</label>
+            <input type="radio" id="name" name="field" value="name" checked>
+            <label for="name">Name</label>
+            <input type="radio" id="price" name="field" value="price">
+            <label for="price">Price</label>
+            <input type="radio" id="category" name="field" value="category">
+            <label for="category">Category</label>
+
+            
+            <select id="categorySelect" name="categorySelect">
+                <option value="">All</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo $category; ?>"><?php echo $category; ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <button type="submit">Filter</button>
+        </form>
 
     <table border="1">
         <thead>
@@ -107,12 +116,15 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             <?php endforeach; ?>
         </tbody>
     </table>
+    </fieldset>
+
 
     <footer>
-        <p>Last updated: <?php echo date('Y-m-d'); ?></p>
-        <p>Store Address: 123 Fashion Ave, New York, NY</p>
-        <p>Customer Support: (555) 123-4567 | support@eclothingstore.com</p>
-        <a href="contact.php">Contact Us</a>
+        Last updated: May 15, 2024
+        <address>
+            <p>Store address: Al-Wakalat St. Ramallah, Palestine</p>
+        </address>
+        Customer Support: <a href="contact.html">Contact Us</a>
     </footer>
 </body>
 </html>

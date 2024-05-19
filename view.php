@@ -41,6 +41,18 @@ if ($row === false) {
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <h1>Gentleman's Reserve</h1>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Store Logo" width="50px">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.php">Products</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
     <?php
     if (isset($error)) {
         echo "<h1>$error</h1>";
@@ -49,6 +61,12 @@ if ($row === false) {
     }
     ?>
 
-    <a href="products.php">Back to products</a>
+    <footer>
+        Last updated: May 15, 2024
+        <address>
+            <p>Store address: Al-Wakalat St. Ramallah, Palestine</p>
+        </address>
+        Customer Support: <a href="contact.html">Contact Us</a>
+    </footer>
 </body>
 </html>

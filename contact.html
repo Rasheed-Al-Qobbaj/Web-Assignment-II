@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - Gentleman's Reserve</title>
+</head>
+<body>
+    <header>
+        <h1>Gentleman's Reserve</h1>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Store Logo" width="50px">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.php">Products</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Contact Us</h2>
+            <address>
+                <p><strong>Store address:</strong> Al-Wakalat St. Ramallah, Palestine</p>
+                <p><strong>Telephone:</strong> +970 599767544</p>
+                <p><strong>Email:</strong> rasheedsrq@gmail.com</p>
+            </address>
+            <form action="http://comp334.studentswebprojects.ritaj.ps/util/process.php" method="post">
+                <fieldset>
+                    <label for="name">Sender Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">Sender E-mail:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="location">Sender Location (city):</label><br>
+                    <input type="text" id="location" name="location" required><br><br>
+                    <label for="subject">Message Subject:</label><br>
+                    <input type="text" id="subject" name="subject" required><br><br>
+                    <label for="message">Message Body:</label><br>
+                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+                    <input type="submit" value="Send">
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer>
+        Last updated: May 15, 2024
+        <address>
+            <p>Store address: Al-Wakalat St. Ramallah, Palestine</p>
+        </address>
+        Customer Support: <a href="contact.html">Contact Us</a>
+    </footer>
+</body>
+</html>

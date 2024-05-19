@@ -60,6 +60,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Add Product</title>
 </head>
 <body>
+    <header>
+        <h1>Gentleman's Reserve</h1>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Store Logo" width="50px">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.php">Products</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
     <h1>Add Product</h1>
     <fieldset>
         <legend>Product Record</legend>
@@ -95,5 +107,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="submit" value="Add Product">
         </form>
     </fieldset>
+    <footer>
+        Last updated: May 15, 2024
+        <address>
+            <p>Store address: Al-Wakalat St. Ramallah, Palestine</p>
+        </address>
+        Customer Support: <a href="contact.html">Contact Us</a>
+    </footer>
 </body>
 </html>

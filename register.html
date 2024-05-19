@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Gentleman's Reserve</title>
+</head>
+<body>
+    <header>
+        <h1>Gentleman's Reserve</h1>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Store Logo" width="50px">
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.php">Products</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Customer Registration Form</h2>
+            <form action="http://comp334.studentswebprojects.ritaj.ps/util/process.php" method="post">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="firstName">First Name:</label><br>
+                    <input type="text" id="firstName" name="firstName" required><br><br>
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" id="lastName" name="lastName" required><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="phone">Phone:</label><br>
+                    <input type="tel" id="phone" name="phone" placeholder="Format: 123-456-7890" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br><br>
+                </fieldset>
+                <fieldset>
+                    <legend>Address</legend>
+                    <label for="address">Address:</label><br>
+                    <textarea id="address" name="address" rows="4" required></textarea><br><br>
+                    <label for="city">City:</label><br>
+                    <input type="text" id="city" name="city" required><br><br>
+                    <label for="postalCode">Postal Code:</label><br>
+                    <input type="text" id="postalCode" name="postalCode" required><br><br>
+                    <label for="country">Country:</label><br>
+                    <select id="country" name="country" required>
+                        <option value="" disabled selected>Select your country</option>
+                        <option value="Palestine">Palestine</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Syria">Syria</option>
+                        <option value="Turkey">Turkey</option>
+                    </select><br><br>
+                </fieldset>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    <footer>
+        Last updated: May 15, 2024
+        <address>
+            <p>Store address: Al-Wakalat St. Ramallah, Palestine</p>
+        </address>
+        Customer Support: <a href="contact.html">Contact Us</a>
+    </footer>
+</body>
+</html>
