@@ -73,8 +73,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         </nav>
     </header>
 
+    
     <fieldset>
-        <legend>Filter Products</legend>
+        <legend>Products</legend>
+        <a href="add.php">Add New Product</a>
         <form action="products.php" method="POST">
             <label for="search">Search:</label>
             <input type="text" id="search" name="search" placeholder="Search for something...">

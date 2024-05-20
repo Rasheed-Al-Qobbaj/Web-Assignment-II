@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select><br><br>
 
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" required><br><br>
+            <input type="number" id="price" name="price" step="0.01" required><br><br>
             
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" required><br><br>
